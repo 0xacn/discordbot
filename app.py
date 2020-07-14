@@ -30,5 +30,4 @@ for filename in os.listdir("/home/andrew/Documents/discordbot1/bot/commands"):
     if filename.endswith(".py"):
         bot.load_extension(f"commands.{filename[:-3]}")
 
-
 client.run(client_id)
