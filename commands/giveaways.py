@@ -8,8 +8,10 @@ class Giveaway(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    def
-
+    def start(ctx, days=days title=title)
+        embed = discord.Embed(
+            title= f"{title}"
+        )
 
 
 def setup(bot):
