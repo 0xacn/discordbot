@@ -1,6 +1,6 @@
 import discord
-from discord.ext.commands import commands
-
+from discord.ext import commands
+import asyncio
 
 class Giveaway(commands.Cog):
     
@@ -8,11 +8,8 @@ class Giveaway(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    def start(ctx, days=days title=title)
-        embed = discord.Embed(
-            title= f"{title}"
-        )
-
+    def start(self, ctx, days=None, title=None):
+       pass
 
 def setup(bot):
     bot.add_cog(Giveaway(bot))
