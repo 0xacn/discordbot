@@ -5,19 +5,18 @@ class Mod(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.has_permissions(mute_members=True)
+    @commands.has_permissions(manage_messages=True)
     @commands.command()
     async def clear(self, ctx, amount=15):
       await ctx.channel.purge(limit=amount)
-      
-
-    @commands.has_permissions(mute_members=True)
+    
+    @commands.has_permissions(kick_members=True)
     @commands.command()
     async def kick(self, ctx, member: discord.Member, *, reason=None):
-        await m.kick(reason=reason)
+        await member.kick(reason=reason)
         await ctx.send(f"{member.mention} has been kicked by {message.author}")
 
-    @commands.has_permissions(mute_members=True)
+    @commands.has_permissions(ban_members=True)
     @commands.command()
     async def ban(self, ctx, member : discord.Member, *, reason=None):
         await member.ban(reason=reason)
@@ -37,4 +36,4 @@ class Mod(commands.Cog):
 
 
 def setup(bot):
-    client.add_cog(Mod(bot))
+    bot.add_cog(Mod(bot))

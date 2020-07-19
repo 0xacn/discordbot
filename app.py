@@ -8,8 +8,7 @@ load_dotenv()
 bot = commands.Bot(command_prefix = "n!n")
 client_id = os.getenv("CLIENT_ID")
 guild_id = os.getenv("GUILD_ID")
-
-
+ 
 @commands.is_owner()
 @bot.command()
 async def load(ctx, extension):
@@ -25,9 +24,9 @@ async def unload(ctx, extension):
 async def reload(ctx, extensions):
     bot.unload_extension(f'commands{extension}')
     bot.load_extension(f'commands{extension}')
-
+        
 for filename in os.listdir("/home/andrew/Documents/discordbot1/bot/commands"):
     if filename.endswith(".py"):
         bot.load_extension(f"commands.{filename[:-3]}")
 
-client.run(client_id)
+bot.run(client_id)

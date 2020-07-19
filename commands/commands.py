@@ -18,16 +18,20 @@ class Commands(commands.Cog):
       players[guild.id] = player
       players.play()
       
-  
     @commands.command()
     async def join(self, ctx):
-      channel = ctx.message.author.voice.channel(channel)
-      await bot.join_voice_channel(channel)
-
+      member = ctx.author
+      voice_state = member.voice
+      if voice_state is None:
+        await ctx.send('You must be in a voice channel to use this command.')
+      else: 
+        voice_channel = voice_state.channel       
+        await voice_channel.connect()
+      
     @commands.command()
     async def leave(self, ctx):
       guild = ctx.message.guild
-      voice_client = bot.voice_client_in(guild)
+      voice_client = guild.voice_client
       await voice_client.disconnect()
 
     @commands.command()
@@ -57,6 +61,6 @@ class Commands(commands.Cog):
         pass
 
 def setup(bot):
-  client.add_cog(Commands(bot))
+  bot.add_cog(Commands(bot))
 
 
