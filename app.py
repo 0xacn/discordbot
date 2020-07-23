@@ -12,21 +12,22 @@ guild_id = os.getenv("GUILD_ID")
 @commands.is_owner()
 @bot.command()
 async def load(ctx, extension):
-    bot.load_extension(f'commands{extension}')
+    bot.load_extension(f'cogs{extension}')
 
 @commands.is_owner()
 @bot.command()
 async def unload(ctx, extension):
-    bot.unload_extension(f'commands{extension}')
+    bot.unload_extension(f'cogs{extension}')
 
 @commands.is_owner()
 @bot.command()
 async def reload(ctx, extensions):
-    bot.unload_extension(f'commands{extension}')
-    bot.load_extension(f'commands{extension}')
-        
-for filename in os.listdir("/home/andrew/Documents/discordbot1/bot/commands"):
-    if filename.endswith(".py"):
-        bot.load_extension(f"commands.{filename[:-3]}")
+    bot.unload_extension(f'cogs{extension}')
+    bot.load_extension(f'cogs{extension}')
+
+if __name__ == "__main__":        
+    for filename in os.listdir("/home/andrew/Documents/discordbot1/bot/cogs"):
+        if filename.endswith(".py"):
+                bot.load_extension(f"cogs.{filename[:-3]}")
 
 bot.run(client_id)
